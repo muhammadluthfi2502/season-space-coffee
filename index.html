@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Season Space & Coffee — A cozy lifestyle café for coffee, food, and conversations." />
+  <title>Season Space & Coffee</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" />
+
+  <!-- Custom Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange:  '#f84904',
+              black:   '#0f0f0f',
+              beige:   '#f5ede7',
+              dgray:   '#2a2a2a',
+              lgray:   '#e5e5e5',
+              green:   '#6b8f71',
+              brown:   '#8b5e3c',
+            }
+          },
+          fontFamily: {
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body class="font-poppins bg-brand-beige text-brand-black overflow-x-hidden">
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+      <div class="flex items-center justify-between h-16 md:h-20">
+
+        <!-- Logo -->
+        <a href="#home" class="flex items-center nav-logo-link" aria-label="Season Space & Coffee home">
+          <img
+            src="assets/logo.png"
+            alt="Season Space & Coffee Logo"
+            class="h-10 md:h-12 w-auto object-contain nav-logo-img"
+          />
+        </a>
+
+        <!-- Desktop Nav Links -->
+        <ul class="hidden md:flex items-center gap-8">
+          <li><a href="#home"       class="nav-link text-sm font-medium">Home</a></li>
+          <li><a href="#menu"       class="nav-link text-sm font-medium">Menu</a></li>
+          <li><a href="#about"      class="nav-link text-sm font-medium">About</a></li>
+          <li><a href="#experience" class="nav-link text-sm font-medium">Experience</a></li>
+          <li><a href="#contact"    class="nav-link text-sm font-medium">Contact</a></li>
+        </ul>
+
+        <!-- CTA + Hamburger -->
+        <div class="flex items-center gap-3">
+          <a href="https://esb.co.id/SSCS" target="_blank" rel="noopener noreferrer" class="hidden md:inline-flex items-center gap-2 bg-brand-orange text-white text-sm font-semibold px-5 py-2.5 rounded-full btn-primary">
+            Order Now
+          </a>
+          <button id="hamburger" class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5" aria-label="Toggle menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden mobile-menu-closed overflow-hidden">
+      <div class="px-5 pb-6 pt-2 mobile-menu-bg">
+        <ul class="flex flex-col gap-1">
+          <li><a href="#home"       class="mobile-nav-link" onclick="closeMobileMenu()">Home</a></li>
+          <li><a href="#menu"       class="mobile-nav-link" onclick="closeMobileMenu()">Menu</a></li>
+          <li><a href="#about"      class="mobile-nav-link" onclick="closeMobileMenu()">About</a></li>
+          <li><a href="#experience" class="mobile-nav-link" onclick="closeMobileMenu()">Experience</a></li>
+          <li><a href="#contact"    class="mobile-nav-link" onclick="closeMobileMenu()">Contact</a></li>
+          <li class="pt-3">
+            <a href="https://esb.co.id/SSCS" target="_blank" rel="noopener noreferrer" class="block text-center bg-brand-orange text-white text-sm font-semibold px-5 py-3 rounded-full btn-primary" onclick="closeMobileMenu()">
+              Order Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="home" class="relative min-h-screen bg-brand-black flex items-center overflow-hidden">
+
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0">
+      <img
+        src="assets/images/hero.jpg"
+        alt="Season Space & Coffee — cozy café interior"
+        class="w-full h-full object-cover opacity-35"
+      />
+    </div>
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 hero-gradient"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12 w-full pt-24 pb-16">
+      <div class="max-w-3xl">
+
+        <!-- Badge -->
+        <div class="hero-badge inline-flex items-center gap-2 mb-6">
+          <span class="w-2 h-2 bg-brand-orange rounded-full animate-pulse"></span>
+          <span class="text-xs font-medium tracking-widest uppercase text-white/70">Now Open · Tenggarong, Kutai Kartanegara</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="hero-heading text-white font-bold leading-[1.1] mb-6">
+          A Space for<br />
+          <span class="text-brand-orange">Coffee, Food</span><br />
+          &amp; Conversations
+        </h1>
+
+        <!-- Subtext -->
+        <p class="hero-sub text-white/70 text-base md:text-lg font-light leading-relaxed max-w-xl mb-10">
+          More than just a café — Season is your third place. 
+          Come for the coffee, stay for the vibes, return for the community.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta flex flex-col sm:flex-row gap-3">
+          <a href="#menu" class="inline-flex items-center justify-center gap-2 bg-brand-orange text-white font-semibold px-7 py-4 rounded-full btn-primary text-sm md:text-base">
+            <i class="fa-solid fa-utensils"></i>
+            View Menu
+          </a>
+          <a href="#contact" class="inline-flex items-center justify-center gap-2 border border-white/30 text-white font-medium px-7 py-4 rounded-full btn-secondary text-sm md:text-base backdrop-blur-sm">
+            <i class="fa-solid fa-location-dot"></i>
+            Visit Us
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats flex flex-wrap gap-8 mt-14 pt-10 border-t border-white/10">
+          <div>
+            <p class="text-3xl font-bold text-white">30+</p>
+            <p class="text-xs text-white/50 mt-0.5 uppercase tracking-wider">Menu Items</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-white">2+</p>
+            <p class="text-xs text-white/50 mt-0.5 uppercase tracking-wider">Years Open</p>
+          </div>
+          <div>
+            <p class="text-3xl font-bold text-white">1K+</p>
+            <p class="text-xs text-white/50 mt-0.5 uppercase tracking-wider">Happy Guests</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 hero-badge">
+      <p class="text-white/40 text-[10px] uppercase tracking-widest">Scroll</p>
+      <div class="scroll-indicator"></div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT SECTION
+  ============================================================ -->
+  <section id="about" class="py-20 md:py-28 bg-brand-beige">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Image Column -->
+        <div class="reveal-left relative">
+          <div class="relative rounded-3xl overflow-hidden aspect-[4/5] max-w-lg mx-auto lg:mx-0">
+            <img
+              src="assets/images/about.jpg"
+              alt="Cozy interior of Season Space & Coffee"
+              class="w-full h-full object-cover img-zoom-hover"
+            />
+          </div>
+          <!-- Floating badge -->
+          <div class="about-float-badge absolute -bottom-4 -right-4 lg:right-8 bg-brand-orange text-white rounded-2xl p-5 shadow-xl max-w-[160px]">
+            <p class="text-3xl font-bold">7</p>
+            <p class="text-xs font-medium leading-tight mt-1">Days a Week <br/>Open for You</p>
+          </div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="reveal-right">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title mt-3 mb-6">More Than Coffee.<br />It's a Lifestyle.</h2>
+          <div class="space-y-4 text-brand-black/70 text-base leading-relaxed">
+            <p>
+              Season Space & Coffee hadir dari sebuah keyakinan sederhana — bahwa secangkir kopi akan terasa lebih bermakna ketika dinikmati dalam suasana yang nyaman dan menyenangkan.
+            </p>
+            <p>
+              Kami menghadirkan Season Space & Coffee sebagai tempat yang dapat dinikmati dalam berbagai suasana — baik untuk bersantai, berbincang, maupun menjalani aktivitas dengan lebih fokus dalam lingkungan yang tenang dan tertata.
+            </p>
+            <p>
+              Dari minuman signature hingga menu makanan, setiap sajian kami siapkan dengan perhatian terhadap kualitas dan detail. Kami berkomitmen untuk menghadirkan pengalaman yang konsisten, nyaman, dan berkesan bagi setiap kunjungan.
+            </p>
+          </div>
+
+          <!-- Feature pills -->
+          <div class="flex flex-wrap gap-3 mt-8">
+            <span class="feature-pill"><i class="fa-solid fa-wifi"></i> Free WiFi</span>
+            <span class="feature-pill"><i class="fa-solid fa-door-open"></i> Meeting Room</span>
+            <span class="feature-pill"><i class="fa-solid fa-bolt-lightning"></i> Power Outlets</span>
+            <span class="feature-pill"><i class="fa-solid fa-music"></i> Chill Playlist</span>
+            <span class="feature-pill"><i class="fa-solid fa-parking"></i> Easy Parking</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       SIGNATURE MENU SECTION
+  ============================================================ -->
+  <section id="menu" class="py-20 md:py-28 bg-brand-black">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+
+      <!-- Section Header -->
+      <div class="text-center mb-14 reveal-up">
+        <span class="section-label light">Menu Signature</span>
+        <h2 class="section-title light mt-3">Favorite</h2>
+        <p class="text-white/50 text-sm md:text-base max-w-xl mx-auto mt-4 leading-relaxed">
+          Hand-crafted with care.
+        </p>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+
+        <!-- Card 1 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/almond-cloud.jpg"
+              alt="Almond Cloud — Signature Drink"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge">Signature</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Almond Cloud</h3>
+            <p class="menu-card-desc">Cold brew dengan sentuhan almond yang lembut dan creamy, dipadukan dengan whipped cream yang ringan di atasnya.</p>
+            <p class="menu-card-price">Rp 38.000</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/mystic-forest.jpg"
+              alt="Mystic Forest — Signature Drink"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge">Best Seller</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Mystic Forest</h3>
+            <p class="menu-card-desc">Perpaduan matcha dan cold brew yang segar, dengan karakter earthy yang halus dan menenangkan.</p>
+            <p class="menu-card-price">Rp 40.000</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/sweet-summer.jpg"
+              alt="Sweet Summer — Iced Coffee"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge">New</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Sweet Summer</h3>
+            <p class="menu-card-desc">Latte dingin bernuansa tropis dengan sentuhan kelapa dan drizzle karamel yang manis dan ringan.</p>
+            <p class="menu-card-price">Rp 38.000</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/nasi-goreng.jpg"
+              alt="Nasi Goreng Season"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge food">Food</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Nasi Goreng Season</h3>
+            <p class="menu-card-desc">Nasi goreng spesial racikan khas kami, dimasak dengan bumbu rahasia dan disajikan dengan telur.</p>
+            <p class="menu-card-price">Rp 48.000</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/sakura.jpg"
+              alt="Autumn of Sakura — Signature Drink"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge">Seasonal</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Autumn of Sakura</h3>
+            <p class="menu-card-desc">Minuman latte dengan aroma bunga sakura yang lembut, menghadirkan rasa floral yang ringan dan elegan.</p>
+            <p class="menu-card-price">Rp 36.000</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="menu-card reveal-up">
+          <div class="menu-card-img-wrap">
+            <img
+              src="assets/images/mother-nature.jpg"
+              alt="Mother of Nature — Signature Drink"
+              class="menu-card-img"
+            />
+            <span class="menu-card-badge">Signature</span>
+          </div>
+          <div class="menu-card-body">
+            <h3 class="menu-card-name">Mother of Nature</h3>
+            <p class="menu-card-desc">Cold brew yang dipadukan dengan butterfly pea dan susu oat, menghasilkan tampilan unik dengan rasa yang lembut dan menyegarkan.</p>
+            <p class="menu-card-price">Rp 40.000</p>
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+
+      <div class="text-center mt-12 reveal-up">
+        <a href="#full-menu" class="inline-flex items-center gap-2 border border-white/20 text-white text-sm font-medium px-7 py-3.5 rounded-full btn-secondary-light hover:bg-white/10 transition-all duration-300">
+          See Full Menu <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FULL MENU SECTION
+  ============================================================ -->
+  <section id="full-menu" class="py-20 md:py-28 bg-brand-beige">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+
+      <!-- Section Header -->
+      <div class="text-center mb-14 reveal-up">
+        <span class="section-label">Complete Menu</span>
+        <h2 class="section-title mt-3">Everything We Serve</h2>
+        <p class="text-brand-black/50 text-sm md:text-base max-w-xl mx-auto mt-4">
+          From specialty drinks to hearty plates — there's always something for your mood.
+        </p>
+      </div>
+
+      <!-- Main Category Tabs -->
+      <div class="flex flex-wrap justify-center gap-2 mb-10 reveal-up" id="menu-tabs">
+        <button class="menu-tab active" data-tab="signature-drinks">Signature Drinks</button>
+        <button class="menu-tab" data-tab="coffee">Coffee</button>
+        <button class="menu-tab" data-tab="non-coffee">Non-Coffee</button>
+        <button class="menu-tab" data-tab="food">Food</button>
+      </div>
+
+      <!-- ── PANEL: Signature Drinks ── -->
+      <div class="menu-panel active" id="panel-signature-drinks">
+        <div class="menu-accordion">
+
+          <div class="mac-item" data-desc="Espresso, es krim, almond milk, dan taburan kacang almond">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Almond Cloud</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 38.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Espresso, es krim, almond milk, dan taburan kacang almond</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Clarified UHT dengan kopi, mojito, peach, kelapa, dan osmanthus">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Mother of Nature</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 40.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Clarified UHT dengan kopi, mojito, peach, kelapa, dan osmanthus</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Clarified UHT dengan kopi, mojito, kelapa, dan osmanthus">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Sweet Summer</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 38.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Clarified UHT dengan kopi, mojito, kelapa, dan osmanthus</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Susu full cream, peach, dan bunga sakura">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Autumn of Sakura</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 36.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Susu full cream, peach, dan bunga sakura</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Blueberry, orange, mint, butterscotch">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Sourberry</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 36.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Blueberry, orange, mint, butterscotch</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Orange, mix fruit, mint, kiwi">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Sunburst</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 32.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Orange, mix fruit, mint, kiwi</p></div>
+          </div>
+
+          <div class="mac-item" data-desc="Matcha, susu, cengkeh, mint, frambozen">
+            <div class="mac-header">
+              <div class="mac-left">
+                <span class="mac-name">Mystic Forest</span>
+                <span class="mac-hint">Tap for description</span>
+              </div>
+              <div class="mac-right">
+                <span class="mac-price">Rp 40.000</span>
+                <span class="mac-chevron"><i class="fa-solid fa-chevron-down"></i></span>
+              </div>
+            </div>
+            <div class="mac-body"><p class="mac-desc">Matcha, susu, cengkeh, mint, frambozen</p></div>
+          </div>
+
+        </div><!-- /menu-accordion -->
+      </div>
+
+      <!-- ── PANEL: Coffee ── -->
+      <div class="menu-panel" id="panel-coffee">
+        <div class="menu-accordion">
+
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Americano</span></div><div class="mac-right"><span class="mac-price">Rp 24.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Cappuccino</span></div><div class="mac-right"><span class="mac-price">Rp 32.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Caffè Latte</span></div><div class="mac-right"><span class="mac-price">Rp 32.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Flat White</span></div><div class="mac-right"><span class="mac-price">Rp 32.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Mocca Cino</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Vanilla Latte</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Espresso</span></div><div class="mac-right"><span class="mac-price">Rp 24.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Spanish Latte</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Pandan Breeze</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Sweet Latte</span></div><div class="mac-right"><span class="mac-price">Rp 24.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Magic Latte</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Piccolo</span></div><div class="mac-right"><span class="mac-price">Rp 32.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Salted Caramel Macchiato</span></div><div class="mac-right"><span class="mac-price">Rp 32.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Palm Sugar Latte</span></div><div class="mac-right"><span class="mac-price">Rp 28.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Roam &amp; Roast</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Affogato</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Vietnam Drip</span></div><div class="mac-right"><span class="mac-price">Rp 24.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Pour Over / Japanese Ice</span></div><div class="mac-right"><span class="mac-price">from Rp 34.000</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Non-Coffee ── -->
+      <div class="menu-panel" id="panel-non-coffee">
+        <div class="menu-accordion">
+
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Choco Latte</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Matcha Latte</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Charcoal Latte</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Red Velvet Latte</span></div><div class="mac-right"><span class="mac-price">Rp 30.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Summer Breeze</span></div><div class="mac-right"><span class="mac-price">Rp 38.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Sunshine Squeeze</span></div><div class="mac-right"><span class="mac-price">Rp 40.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Lemon Tea</span></div><div class="mac-right"><span class="mac-price">Rp 26.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Black Tea</span></div><div class="mac-right"><span class="mac-price">Rp 22.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Peach Tea</span></div><div class="mac-right"><span class="mac-price">Rp 34.000</span></div></div></div>
+          <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Lychee Tea</span></div><div class="mac-right"><span class="mac-price">Rp 34.000</span></div></div></div>
+
+        </div>
+      </div>
+
+      <!-- ── PANEL: Food ── -->
+      <div class="menu-panel" id="panel-food">
+
+        <!-- Food Subcategory Pills (horizontally scrollable) -->
+        <div class="food-subcat-wrap reveal-up">
+          <div class="food-subcat-scroll" id="food-subcats">
+            <button class="food-pill active" data-sub="indonesian-rice">🍚 Indonesian (Rice)</button>
+            <button class="food-pill" data-sub="indonesian-noodle">🍜 Indonesian (Noodle)</button>
+            <button class="food-pill" data-sub="western">🥩 Western</button>
+            <button class="food-pill" data-sub="japanese">🍱 Japanese</button>
+            <button class="food-pill" data-sub="pasta">🍝 Pasta</button>
+            <button class="food-pill" data-sub="snacks">🍟 Snacks</button>
+            <button class="food-pill" data-sub="breakfast-soup">🥣 Breakfast &amp; Soup</button>
+          </div>
+        </div>
+
+        <!-- Food Sub-panels -->
+
+        <!-- Indonesian Rice -->
+        <div class="food-subpanel active" id="sub-indonesian-rice">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Iga Bakar Madu</span></div><div class="mac-right"><span class="mac-price">Rp 82.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Bebek Bakar Madu</span></div><div class="mac-right"><span class="mac-price">Rp 68.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Sapi Lada Hitam</span></div><div class="mac-right"><span class="mac-price">Rp 64.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Sup Buntut</span></div><div class="mac-right"><span class="mac-price">Rp 92.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Ayam Asam Manis / Pedas</span></div><div class="mac-right"><span class="mac-price">Rp 54.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Ayam Gandum Crispy</span></div><div class="mac-right"><span class="mac-price">Rp 58.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Ayam Sambal Matah</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Dory Sambal Matah</span></div><div class="mac-right"><span class="mac-price">Rp 48.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Nasi Goreng Season</span></div><div class="mac-right"><span class="mac-price">Rp 48.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Nasi Goreng Seafood</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Nasi Goreng Ayam</span></div><div class="mac-right"><span class="mac-price">Rp 38.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Udang Asam Manis / Pedas</span></div><div class="mac-right"><span class="mac-price">Rp 68.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Indonesian Noodle -->
+        <div class="food-subpanel" id="sub-indonesian-noodle">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Mie Goreng Seafood</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Mie Goreng Ayam</span></div><div class="mac-right"><span class="mac-price">Rp 38.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Kwetiau Goreng Seafood</span></div><div class="mac-right"><span class="mac-price">Rp 46.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Kwetiau Goreng Ayam</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Western -->
+        <div class="food-subpanel" id="sub-western">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Beef Steak</span></div><div class="mac-right"><span class="mac-price">Rp 135.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Fish and Chips</span></div><div class="mac-right"><span class="mac-price">Rp 68.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Season Burger</span></div><div class="mac-right"><span class="mac-price">Rp 50.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Japanese -->
+        <div class="food-subpanel" id="sub-japanese">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Chicken Katsudon</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Chicken Katsu Curry Rice</span></div><div class="mac-right"><span class="mac-price">Rp 64.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Beef Teriyaki</span></div><div class="mac-right"><span class="mac-price">Rp 60.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Pasta -->
+        <div class="food-subpanel" id="sub-pasta">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Mac and Cheese</span></div><div class="mac-right"><span class="mac-price">Rp 68.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Spaghetti Brulee</span></div><div class="mac-right"><span class="mac-price">Rp 62.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Snacks -->
+        <div class="food-subpanel" id="sub-snacks">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Shimeji Cabe Garam</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Tahu Cabe Garam</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Chicken Wings</span></div><div class="mac-right"><span class="mac-price">Rp 62.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Banana Brulee French Toast</span></div><div class="mac-right"><span class="mac-price">Rp 38.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Tempe Goreng</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Singkong Goreng</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Mix Platter</span></div><div class="mac-right"><span class="mac-price">Rp 52.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Croissant Ham &amp; Cheese</span></div><div class="mac-right"><span class="mac-price">Rp 45.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Croissant Cheese Cream</span></div><div class="mac-right"><span class="mac-price">Rp 45.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Croissant Season</span></div><div class="mac-right"><span class="mac-price">Rp 50.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Croffle and Honey</span></div><div class="mac-right"><span class="mac-price">Rp 48.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Pisang Pasir</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">French Fries</span></div><div class="mac-right"><span class="mac-price">Rp 25.000</span></div></div></div>
+          </div>
+        </div>
+
+        <!-- Breakfast & Soup -->
+        <div class="food-subpanel" id="sub-breakfast-soup">
+          <div class="menu-accordion">
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Bubur Ayam</span></div><div class="mac-right"><span class="mac-price">Rp 36.000</span></div></div></div>
+            <div class="mac-item mac-simple"><div class="mac-header"><div class="mac-left"><span class="mac-name">Bubur Ikan</span></div><div class="mac-right"><span class="mac-price">Rp 42.000</span></div></div></div>
+          </div>
+        </div>
+
+      </div><!-- /panel-food -->
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       EXPERIENCE SECTION
+  ============================================================ -->
+  <section id="experience" class="py-20 md:py-28 bg-brand-dgray">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+
+      <!-- Section Header -->
+      <div class="text-center mb-14 reveal-up">
+        <span class="section-label light">The Season Experience</span>
+        <h2 class="section-title light mt-3">Your Space, Your Pace</h2>
+      </div>
+
+      <!-- Experience Grid -->
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+
+        <!-- Card: Cozy Environment -->
+        <div class="exp-card reveal-up">
+          <div class="exp-card-icon">
+            <i class="fa-solid fa-couch text-brand-orange text-2xl"></i>
+          </div>
+          <h3 class="exp-card-title">Cozy Environment</h3>
+          <p class="exp-card-desc">
+            Pencahayaan yang hangat, tempat duduk yang nyaman, 
+            dan penataan ruang yang dirancang dengan baik menciptakan suasana yang ideal 
+            untuk bersantai maupun menikmati waktu dengan tenang.
+          </p>
+        </div>
+
+        <!-- Card: Hangout Space -->
+        <div class="exp-card reveal-up">
+          <div class="exp-card-icon">
+            <i class="fa-solid fa-people-group text-brand-orange text-2xl"></i>
+          </div>
+          <h3 class="exp-card-title">Social Hangout</h3>
+          <p class="exp-card-desc">
+            Bertemu teman, berbincang santai, maupun menikmati waktu sendiri, 
+            dengan suasana yang tetap nyaman untuk fokus dan beraktivitas.
+          </p>
+        </div>
+
+        <!-- Card: Meeting Room -->
+        <div class="exp-card reveal-up">
+          <div class="exp-card-icon">
+            <i class="fa-solid fa-briefcase text-brand-orange text-2xl"></i>
+          </div>
+          <h3 class="exp-card-title">Meeting Room</h3>
+          <p class="exp-card-desc">
+            Ruang meeting private yang nyaman untuk diskusi, pertemuan kecil, atau kebutuhan profesional lainnya. 
+            Tersedia melalui reservasi.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Full-width image strip -->
+      <div class="grid md:grid-cols-2 gap-6 reveal-up">
+        <div class="rounded-3xl overflow-hidden h-64 md:h-80">
+          <img
+            src="assets/images/experience-1.jpg"
+            alt="Season café environment - cozy seating area"
+            class="w-full h-full object-cover img-zoom-hover"
+          />
+        </div>
+        <div class="rounded-3xl overflow-hidden h-64 md:h-80">
+          <img
+            src="assets/images/experience-2.jpg"
+            alt="Season café ambiance - warm lighting"
+            class="w-full h-full object-cover img-zoom-hover"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CTA SECTION
+  ============================================================ -->
+  <section class="py-20 md:py-28 bg-brand-orange">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 text-center reveal-up">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-white/60 mb-4">Come Say Hello</span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
+        Visit Season Space<br />Today
+      </h2>
+      <p class="text-white/80 text-base md:text-lg max-w-lg mx-auto mb-10 leading-relaxed">
+        We're open every day. Come grab a cup, find a corner, and make yourself at home.
+      </p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a href="https://maps.app.goo.gl/tBziQdTAvZrWmuxy9" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 bg-white text-brand-orange font-bold px-8 py-4 rounded-full btn-cta-white text-sm md:text-base">
+          <i class="fa-solid fa-map-location-dot"></i>
+          Get Directions
+        </a>
+        <a href="https://esb.co.id/SSCS" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white font-semibold px-8 py-4 rounded-full btn-cta-outline text-sm md:text-base">
+          <i class="fa-solid fa-book-open"></i>
+          Order Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer id="contact" class="bg-brand-black pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
+
+      <!-- Footer Top Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
+
+        <!-- Brand Column -->
+        <div class="lg:col-span-1">
+          <div class="flex items-center mb-5">
+            <img
+              src="assets/logo.png"
+              alt="Season Space & Coffee Logo"
+              class="h-10 w-auto object-contain"
+            />
+          </div>
+          <p class="text-white/50 text-sm leading-relaxed max-w-xs">
+            A lifestyle café built for coffee lovers, food enthusiasts, and people who value great conversations.
+          </p>
+          <!-- Social -->
+          <div class="flex gap-3 mt-6">
+            <a href="https://www.instagram.com/seasonspace.trg/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@seasonspacecoffee/" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="space-y-2.5 mt-4">
+            <li><a href="#home"       class="footer-link">Home</a></li>
+            <li><a href="#about"      class="footer-link">About Us</a></li>
+            <li><a href="#menu"       class="footer-link">Signature Menu</a></li>
+            <li><a href="#full-menu"  class="footer-link">Full Menu</a></li>
+            <li><a href="#experience" class="footer-link">Experience</a></li>
+          </ul>
+        </div>
+
+        <!-- Opening Hours -->
+        <div>
+          <h4 class="footer-heading">Jam Operasional</h4>
+          <ul class="space-y-2.5 mt-4 text-sm text-white/50">
+            <li class="flex justify-between gap-4">
+              <span>Senin – Sabtu</span>
+              <span class="text-white/80">09.00 – 23.00</span>
+            </li>
+            <li class="flex justify-between gap-4">
+              <span>Minggu</span>
+              <span class="text-white/80">09.00 – 00.00</span>
+            </li>
+          </ul>
+          <div class="mt-5 inline-flex items-center gap-2 bg-brand-green/20 text-brand-green text-xs font-medium px-3 py-1.5 rounded-full">
+            <span class="w-1.5 h-1.5 bg-brand-green rounded-full animate-pulse"></span>
+            Open Now
+          </div>
+        </div>
+
+        <!-- Address & Contact -->
+        <div>
+          <h4 class="footer-heading">Find Us</h4>
+          <ul class="space-y-4 mt-4">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-brand-orange mt-0.5 flex-shrink-0"></i>
+              <p class="text-sm text-white/50 leading-relaxed">
+                Jl. Panji No.47, Panji, Kec. Tenggarong, Kabupaten Kutai Kartanegara, Kalimantan Timur 75513, Indonesia<br />
+              </p>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-brand-orange flex-shrink-0"></i>
+              <a href="tel:+6282358015151" class="text-sm text-white/50 hover:text-brand-orange transition-colors">+62 823 5801 5151</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-brand-orange flex-shrink-0"></i>
+              <a href="mailto:hello@seasonspace.co" class="text-sm text-white/50 hover:text-brand-orange transition-colors">hello@seasonspace.co</a>
+            </li>
+          </ul>
+        </div>
+
+      </div><!-- /footer top grid -->
+
+      <!-- Footer Divider -->
+      <div class="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-white/30">© 2024 Season Space & Coffee. All rights reserved.</p>
+        <p class="text-xs text-white/20">Crafted with <span class="text-brand-orange">♥</span> in Tenggarong</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top" class="fixed bottom-6 right-6 w-11 h-11 bg-brand-orange text-white rounded-full flex items-center justify-center shadow-lg back-to-top-hidden z-40">
+    <i class="fa-solid fa-chevron-up text-sm"></i>
+  </button>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+</html>
