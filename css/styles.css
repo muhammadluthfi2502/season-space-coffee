@@ -309,6 +309,7 @@ body {
   border: 2px solid rgba(255,255,255,0.25);
   border-radius: 12px;
   position: relative;
+  flex-shrink: 0;
 }
 .scroll-indicator::after {
   content: '';
@@ -325,6 +326,18 @@ body {
 @keyframes scrollDot {
   0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
   100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+}
+
+.hero-scroll-indicator {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+  animation-delay: 1.5s;
+}
+
+@media (max-height: 560px) {
+  .hero-scroll-indicator {
+    display: none;
+  }
 }
 
 
