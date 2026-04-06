@@ -366,3 +366,53 @@ function openAccordionItem(item) {
 
   updateActiveLink();
 })();
+
+/* ----------------------------------------------------------------
+   Open status
+---------------------------------------------------------------- */
+(function initOpenStatus() {
+  const statusText = document.getElementById('status-text');
+  const statusDot  = document.getElementById('status-dot');
+
+  if (!statusText || !statusDot) return;
+
+  function updateStatus() {
+    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Makassar" }));
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+
+    // Convert time to minutes for easier comparison
+    const currentTime = hours * 60 + minutes;
+
+    const openTime  = 9 * 60;        // 09:00
+    const closeTime = 24 * 60;       // 00:00 (midnight)
+
+    if (currentTime >= openTime && currentTime < closeTime) {
+      // OPEN
+      statusText.textContent = "Buka Sekarang";
+      statusDot.classList.add("animate-pulse");
+
+      statusText.parentElement.classList.remove("bg-red-500/20", "text-red-400");
+      statusText.parentElement.classList.add("bg-brand-green/20", "text-brand-green");
+
+      statusDot.classList.remove("bg-red-400");
+      statusDot.classList.add("bg-brand-green");
+
+    } else {
+      // CLOSED
+      statusText.textContent = "Tutup";
+      statusDot.classList.remove("animate-pulse");
+
+      statusText.parentElement.classList.remove("bg-brand-green/20", "text-brand-green");
+      statusText.parentElement.classList.add("bg-red-500/20", "text-red-400");
+
+      statusDot.classList.remove("bg-brand-green");
+      statusDot.classList.add("bg-red-400");
+    }
+  }
+
+  updateStatus();
+
+  // Update every minute (not every second — don’t waste performance)
+  setInterval(updateStatus, 60000);
+})();
