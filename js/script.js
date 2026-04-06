@@ -415,4 +415,6 @@ function openAccordionItem(item) {
 
   // Update every minute (not every second — don’t waste performance)
   setInterval(updateStatus, 60000);
+  console.log("Open status running");
+  console.log(statusText, statusDot);
 })();
