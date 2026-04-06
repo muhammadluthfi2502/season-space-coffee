@@ -370,41 +370,41 @@ function openAccordionItem(item) {
 /* ----------------------------------------------------------------
    Open status
 ---------------------------------------------------------------- */
-(function initOpenStatus() {
+function initOpenStatus() {
   const statusText = document.getElementById('status-text');
   const statusDot  = document.getElementById('status-dot');
+  const container  = document.getElementById('open-status');
 
-  if (!statusText || !statusDot) return;
+  if (!statusText || !statusDot || !container) return;
 
   function updateStatus() {
-    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Asia/Makassar" }));
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
+    const now = new Date(
+      new Date().toLocaleString("en-US", { timeZone: "Asia/Makassar" })
+    );
 
-    // Convert time to minutes for easier comparison
-    const currentTime = hours * 60 + minutes;
+    const currentTime = now.getHours() * 60 + now.getMinutes();
 
-    const openTime  = 9 * 60;        // 09:00
-    const closeTime = 24 * 60;       // 00:00 (midnight)
+    const openTime  = 9 * 60;   // 09:00
+    const closeTime = 24 * 60;  // 00:00
 
     if (currentTime >= openTime && currentTime < closeTime) {
-      // OPEN
+      // ✅ OPEN
       statusText.textContent = "Buka Sekarang";
       statusDot.classList.add("animate-pulse");
 
-      statusText.parentElement.classList.remove("bg-red-500/20", "text-red-400");
-      statusText.parentElement.classList.add("bg-brand-green/20", "text-brand-green");
+      container.classList.remove("bg-red-500/20", "text-red-400");
+      container.classList.add("bg-brand-green/20", "text-brand-green");
 
       statusDot.classList.remove("bg-red-400");
       statusDot.classList.add("bg-brand-green");
 
     } else {
-      // CLOSED
-      statusText.textContent = "Tutup";
+      // ❌ CLOSED
+      statusText.textContent = "Tutup • Buka lagi 09.00";
       statusDot.classList.remove("animate-pulse");
 
-      statusText.parentElement.classList.remove("bg-brand-green/20", "text-brand-green");
-      statusText.parentElement.classList.add("bg-red-500/20", "text-red-400");
+      container.classList.remove("bg-brand-green/20", "text-brand-green");
+      container.classList.add("bg-red-500/20", "text-red-400");
 
       statusDot.classList.remove("bg-brand-green");
       statusDot.classList.add("bg-red-400");
@@ -412,9 +412,8 @@ function openAccordionItem(item) {
   }
 
   updateStatus();
+  setInterval(updateStatus, 60000); // update every minute
+}
 
-  // Update every minute (not every second — don’t waste performance)
-  setInterval(updateStatus, 60000);
-  console.log("Open status running");
-  console.log(statusText, statusDot);
-})();
+// 🔒 Ensure DOM is ready (THIS is the critical fix)
+document.addEventListener("DOMContentLoaded", initOpenStatus);
